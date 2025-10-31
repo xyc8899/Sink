@@ -5,25 +5,25 @@ useColorMode().preference = 'dark'
 </script>
 
 <template>
-  <main class="flex flex-col min-h-[80vh] items-center justify-center p-8">
+  <main class="tech-bg flex flex-col min-h-[80vh] items-center justify-center p-8 overflow-hidden">
     
-    <div class="flex items-center space-x-4 mb-8">
+    <div class="flex items-center space-x-4 mb-8 logo-breath">
       <span class="flex items-center justify-center w-16 h-16 rounded-full">
         <img src="/sink.png" alt="Sink" class="w-full h-full rounded-full">
       </span>
-      <h1 class="text-5xl font-black text-gray-900 dark:text-gray-100">
+      <h1 class="text-5xl font-black text-gray-100">
         Sink
       </h1>
     </div>
 
-    <p class="text-lg text-slate-600 dark:text-slate-400 mb-12">
+    <p class="text-lg text-slate-400 mb-12">
       A Simple / Speedy / Secure Link Shortener.
     </p>
 
     <NuxtLink 
       href="/dashboard" 
       title="Sink Dashboard" 
-      class="rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-8 py-3 bg-black dark:bg-white text-white dark:text-black text-lg font-medium hover:bg-gray-800 dark:hover:bg-gray-200 border-2 border-transparent flex items-center justify-center gap-2"
+      class="glow-button rounded text-center transition focus-visible:ring-2 ring-offset-2 ring-gray-200 px-8 py-3 text-lg font-medium flex items-center justify-center gap-2"
     >
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-dashboard w-5 h-5">
         <rect width="7" height="9" x="3" y="3" rx="1"></rect>
@@ -38,7 +38,7 @@ useColorMode().preference = 'dark'
       href="https://github.com/ccbikai/sink" 
       target="_blank" 
       title="Github" 
-      class="inline-flex items-center text-sm font-medium leading-4 text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white focus:outline-none mt-8 transition"
+      class="inline-flex items-center text-sm font-medium leading-4 text-gray-400 hover:text-white focus:outline-none mt-8 transition"
     >
       <svg width="24px" height="24px" role="img" viewBox="0 0 24 24" class="w-5 h-5 mr-2" fill="currentColor">
         <title>GitHub</title>
@@ -48,3 +48,54 @@ useColorMode().preference = 'dark'
     </NuxtLink>
   </main>
 </template>
+
+<style scoped>
+/* 科技感背景: 深邃的径向渐变，而不是纯黑 */
+.tech-bg {
+  background: radial-gradient(ellipse at bottom, #0d1a2f 0%, #0c111c 100%);
+  color: #e5e7eb; /* 确保文字在深色背景上可读 */
+}
+
+/* Logo 呼吸动画: 增加微妙的动感 */
+.logo-breath {
+  animation: breath 4s infinite alternate ease-in-out;
+}
+
+@keyframes breath {
+  from {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+/* Dashboard 按钮发光动画: 
+   使其成为页面的视觉焦点 
+*/
+.glow-button {
+  /* 基础样式 (来自 Tailwind: bg-white text-black) */
+  background-color: #ffffff;
+  color: #000000;
+  
+  /* 发光效果 */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2);
+  animation: pulse-glow 3s infinite alternate;
+}
+
+.glow-button:hover {
+  background-color: #e5e7eb; /* 对应 hover:bg-gray-200 */
+}
+
+@keyframes pulse-glow {
+  from {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2);
+  }
+  to {
+    /* 增强辉光效果 */
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 0.5);
+  }
+}
+</style>
